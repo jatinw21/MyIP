@@ -24,11 +24,23 @@ function forwarded_ip() {
       $ip_array = explode(',', $server[$key]);
       foreach($ip_array as $ip) {
         $ip = trim($ip);
+        if (validate_ip($ip)){
         return $ip;
+        }
       }
     }
   }
   return '';
+}
+
+// checking for a valid IP format
+function validate_ip($ip) {
+  if(filter_var($ip, FILTER_VALIDATE_IP, FILTER_FLAG_IPV4 |
+  FILTER_FLAG_NO_PRIV_RANGE | FILTER_FLAG_NO_RES_RANGE) === false) {
+  return false;
+  } else {
+    return true;
+  }
 }
 
 $remote_ip = $_SERVER['REMOTE_ADDR'];
@@ -44,3 +56,5 @@ Remote IP Address: <?php echo $remote_ip; ?><br/>
   Forwarded for: <?php echo $forwarded_ip; ?><br/>
   <br/>
 <?php } ?>
+
+
