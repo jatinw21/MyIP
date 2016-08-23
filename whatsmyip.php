@@ -1,11 +1,11 @@
-/* This page is available at www.jatin-wadhwa.com/index.php/myip */
+<?php /* This page is available at www.jatin-wadhwa.com/index.php/myip */
 
 // this code improves the code for the cases when user is visiting the site from a proxy
 // a proxy (in most cases) sets one of the various values given below as user's actual IP before sending it's request to the site
 // so we can try and obtain these values
 
 // the function below returns only the first value it sees is set. these are arranged in order of priority and most common ones
-
+?>
 <?php 
 
 function forwarded_ip() {
@@ -39,7 +39,7 @@ $forwarded_ip = forwarded_ip();
 Remote IP Address: <?php echo $remote_ip; ?><br/>
 <br/>
 
-// If any of those forwarded ones were found, then show them
+<?php // If any of those forwarded ones were found, then show them ?>
 <?php if($forwarded_ip != '') { ?>
   Forwarded for: <?php echo $forwarded_ip; ?><br/>
   <br/>
